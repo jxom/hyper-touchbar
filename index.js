@@ -35,12 +35,12 @@ exports.onWindow = (win) => {
 }
 
 exports.onRendererWindow = win => {
-	waitFor(win, 'rpc', rpc => {
-		rpc.on('session add', ({uid}) => {
-			rpc.emit('set uid', uid);
-		});
+  waitFor(win, 'rpc', rpc => {
+    rpc.on('session add', ({uid}) => {
+      rpc.emit('set uid', uid);
+    });
     rpc.on('session set active', ({uid}) => {
-			rpc.emit('set uid', uid);
-		});
-	});
+      rpc.emit('set uid', uid);
+    });
+  });
 };
