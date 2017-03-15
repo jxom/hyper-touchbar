@@ -2,11 +2,11 @@ const { exec } = require('child_process');
 const { TouchBar } = require('electron');
 
 const waitFor = (object, key, fn) => {
-	if (key in object) {
-		fn(object[key]);
-	} else {
-		setTimeout(() => waitFor(object, key, fn), 10);
-	}
+  if (key in object) {
+    fn(object[key]);
+  } else {
+    setTimeout(() => waitFor(object, key, fn), 10);
+  }
 }
 
 exports.onWindow = (win) => {
