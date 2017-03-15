@@ -1,0 +1,15 @@
+{
+  "name": "hyper-touchbar",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jxom/hyper-touchbar.git"
+  },
+  "author": "Jake Moxey",
+  "bugs": {
+    "url": "https://github.com/jxom/hyper-touchbar/issues"
+  },
+  "homepage": "https://github.com/jxom/hyper-touchbar#readme"
+}
