@@ -12,7 +12,4 @@
     "url": "https://github.com/jxom/hyper-touchbar/issues"
   },
   "homepage": "https://github.com/jxom/hyper-touchbar#readme",
-  "dependencies": {
-    "redux": "^3.6.0"
-  }
 }
