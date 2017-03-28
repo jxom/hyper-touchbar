@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "lint": "xo"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jxom/hyper-touchbar.git"
@@ -11,5 +14,15 @@
   "bugs": {
     "url": "https://github.com/jxom/hyper-touchbar/issues"
   },
-  "homepage": "https://github.com/jxom/hyper-touchbar#readme"
+  "homepage": "https://github.com/jxom/hyper-touchbar#readme",
+  "xo": {
+    "space": true,
+    "rules": {
+      "object-curly-spacing": ["error", "always"]
+    },
+    "globals": ["window"]
+  },
+  "devDependencies": {
+    "xo": "^0.18.1"
+  }
 }
