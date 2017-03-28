@@ -11,7 +11,6 @@ const waitFor = (object, key, fn) => {
 
 exports.onWindow = (win) => {
   const { TouchBarButton } = TouchBar;
-  hyperWindow = win;
 
   const commandButton = ({ label, bgColor: backgroundColor, command }) => new TouchBarButton({
     label,
@@ -23,24 +22,29 @@ exports.onWindow = (win) => {
 
   const touchBar = new TouchBar([
     commandButton({ label: 'clear', bgColor: '#c0392b', command: 'clear' }),
-    commandButton({ label: 'ls -a', bgColor: '#2980b9', command: 'ls -a' }),
+    commandButton({ label: 'ls -la', bgColor: '#2980b9', command: 'ls -la' }),
   ]);
 
   win.setTouchBar(touchBar);
 
-  let currentUid;
-  win.rpc.on('set uid', uid => {
+  win.rpc.on('uid set', (uid) => {
     currentUid = uid;
   })
 }
 
+exports.middleware = store => next => (action) => {
+  switch (action.type) {
+    case 'SESSION_SET_ACTIVE': {
+      window.rpc.emit('uid set', action.uid);
+    }
+  }
+  return next(action);
+};
+
 exports.onRendererWindow = win => {
   waitFor(win, 'rpc', rpc => {
     rpc.on('session add', ({uid}) => {
-      rpc.emit('set uid', uid);
-    });
-    rpc.on('session set active', ({uid}) => {
-      rpc.emit('set uid', uid);
+      win.rpc.emit('uid set', uid);
     });
   });
 };
