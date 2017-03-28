@@ -19,11 +19,16 @@
   "xo": {
     "space": true,
     "rules": {
-      "object-curly-spacing": ["error", "always"]
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ]
     },
-    "globals": ["window"]
+    "globals": [
+      "window"
+    ]
   },
   "devDependencies": {
     "xo": "^0.18.1"
-  }
+  },
 }

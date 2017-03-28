@@ -1,5 +1,14 @@
 const { TouchBar } = require('electron');
 
+const TOUCH_BAR_CONTROLS = {
+  default: [
+    { label: 'clear', bgColor: '#c0392b', command: 'clear' },
+    { label: 'ls -la', bgColor: '#2980b9', command: 'ls -la' },
+    { label: 'top', bgColor: '#2980b9', command: 'top' },
+    { label: 'history', bgColor: '#2980b9', command: 'history' }
+  ]
+};
+
 let currentUid;
 
 const waitFor = (object, key, fn) => {
@@ -17,14 +26,13 @@ exports.onWindow = win => {
     label,
     backgroundColor,
     click: () => {
-      win.sessions.get(currentUid).write(`${command}\r`);
+      win.sessions.get(currentUid).write(`\r${command}\r`);
     }
   });
 
-  const touchBar = new TouchBar([
-    commandButton({ label: 'clear', bgColor: '#c0392b', command: 'clear' }),
-    commandButton({ label: 'ls -la', bgColor: '#2980b9', command: 'ls -la' })
-  ]);
+  const generateButtons = (view = 'default') => TOUCH_BAR_CONTROLS[view].map(control => commandButton(control));
+
+  const touchBar = new TouchBar(generateButtons());
 
   win.setTouchBar(touchBar);
 
@@ -39,17 +47,13 @@ exports.middleware = () => next => action => {
       window.rpc.emit('uid set', action.uid);
       break;
     }
+    case 'SESSION_ADD': {
+      window.rpc.emit('uid set', action.uid);
+      break;
+    }
     default: {
       break;
     }
   }
   return next(action);
-};
-
-exports.onRendererWindow = win => {
-  waitFor(win, 'rpc', rpc => {
-    rpc.on('session add', ({ uid }) => {
-      win.rpc.emit('uid set', uid);
-    });
-  });
 };
