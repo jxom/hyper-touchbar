@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/jxom/hyper-touchbar.git"
   },
+  "license": "MIT",
   "author": "Jake Moxey",
   "bugs": {
     "url": "https://github.com/jxom/hyper-touchbar/issues"
