@@ -45,7 +45,7 @@ exports.onWindow = win => {
       }
     });
 
-  const generateButtons = (view = 'default') =>
+  const generateControls = (view = 'default') =>
     getTouchBarControls(view)
       .map(control => {
         if (control.type === 'button') {
@@ -55,14 +55,14 @@ exports.onWindow = win => {
       })
       .filter(control => control);
 
-  win.setTouchBar(new TouchBar(generateButtons()));
+  win.setTouchBar(new TouchBar(generateControls()));
 
   win.rpc.on('uid set', uid => {
     currentUid = uid;
   });
   win.rpc.on('enter pressed', () => {
     setTimeout(() => {
-      win.setTouchBar(new TouchBar(generateButtons()));
+      win.setTouchBar(new TouchBar(generateControls()));
     }, 200);
   });
 };
