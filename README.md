@@ -1,6 +1,6 @@
-# hyper-touchbar
+# hyper-touchbar 🚧👷 (WIP)
 
-NOTE: This is unstable, and will not work in the latest version of Hyper!
+NOTE: This is unstable and work in progress, and will not work in the latest version of Hyper!
 
 > A Mac Touch Bar plugin that equips your touch bar with useful commands.
 
