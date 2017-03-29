@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "xo"
+    "lint": "xo",
+    "prepush": "npm run lint",
+    "prepublish": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -25,10 +27,14 @@
       ]
     },
     "globals": [
-      "window"
+      "window",
+      "store"
     ]
   },
   "devDependencies": {
     "xo": "^0.18.1"
+  },
+  "dependencies": {
+    "shell-history": "^1.1.0"
   }
 }
