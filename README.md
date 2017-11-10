@@ -1,22 +1,26 @@
-# hyper-touchbar 🚧👷 (WIP)
+# Hyper Touchbar
 
-NOTE: This is unstable and work in progress, and will not work in the latest version of Hyper!
+> A Mac Touch Bar plugin for Hyper Term!
 
-> A Mac Touch Bar plugin that equips your touch bar with useful commands.
+## Install
 
-## Why is this unstable?
+To install, edit `~/.hyperjs` and add `hyper-touchbar` to `plugins`:
 
-Because Hyper currently has Electron at version `1.6.2` as a dependency. Electron has Touch Bar support
-in versions `>= 1.6.3`.
+```
+plugins: [
+  "hyper-touchbar",
+],
+```
 
-## How do I get it to work then?
+## Contributing
 
-1. Install the dependencies
-  * If you are running Linux, install `icnsutils`, `graphicsmagick`, `xz-utils` and `rpm`
-  * If you are running Windows, install `windows-build-tools` with `yarn global add windows-build-tools`.
-2. [Fork](https://help.github.com/articles/fork-a-repo/) the [Hyper](https://github.com/zeit/hyper) repository to your own GitHub account and then [clone](https://help.github.com/articles/cloning-a-repository/) it to your local device
-3. Install the dependencies: `yarn`
-4. Install the latest Electron: `yarn add electron@beta --dev`
-5. Build the code and watch for changes: `yarn run dev`
-6. In another terminal tab/window/pane, run the app: `yarn run app`
-7. Add `hyper-touchbar` to `plugins` in `~/.hyper.js`
+Feel free to contribute to Hyper Touchbar by requesting a feature, submitting a bug or contributing code.
+
+To set up the project for development:
+
+1. Clone this repository into `~/.hyper_plugins/local/`
+1. Run `npm install` within the project directory
+1. Run `npm run build` to build the plugin OR `npm run dev` to build the plugin and watch for file changes.
+1. Add the name of the directory to `localPlugins` in `~/.hyper.js`.
+1. Reload terminal window
+1. Happy developing!
