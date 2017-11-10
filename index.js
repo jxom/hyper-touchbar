@@ -1,10 +1,10 @@
 const { TouchBar } = require('electron');
 const shellHistory = require('shell-history');
 
+const MAX_COMMAND_HISTORY_CONTROLS = 5;
 const INITIAL_TOUCH_BAR_CONTROLS = {
   default: [
-    { type: 'button', payload: { label: 'clear', bgColor: '#c0392b', command: 'clear' } },
-    { type: 'button', payload: { label: 'ls -la', bgColor: '#2980b9', command: 'ls -la' } }
+    { type: 'button', payload: { label: 'clear', bgColor: '#c0392b', command: 'clear' } }
   ]
 };
 
@@ -18,7 +18,7 @@ const getCommandHistoryControls = length => {
 const getTouchBarControls = view => {
   let controls = INITIAL_TOUCH_BAR_CONTROLS[view];
   if (view === 'default') {
-    controls = [...controls, ...getCommandHistoryControls(5)];
+    controls = [...controls, ...getCommandHistoryControls(MAX_COMMAND_HISTORY_CONTROLS)];
   }
   return controls;
 };
